@@ -72,6 +72,7 @@ public class PlayState extends GameState {
 		
 		// load music
 		JukeBox.load("/Music/bgmusic.mp3", "music1");
+		System.out.println("Got Music from here");
 		JukeBox.setVolume("music1", -10);
 		JukeBox.loop("music1", 1000, 1000, JukeBox.getFrames("music1") - 1000);
 		JukeBox.load("/Music/finish.mp3", "finish");
