@@ -12,49 +12,49 @@ public class Animation {
 	private int currentsquareTile;
 	private int numsquareTiles;
 	
-	private int count;
-	private int delay;
+	private int numCount;
+	private int timeDelay;
 	
-	private int timesPlayed;
+	private int timesRun;
 	
 	public Animation() {
-		timesPlayed = 0;
+		timesRun = 0;
 	}
 	
 	public void setsquareTiles(BufferedImage[] squareTiles) {
 		this.squareTiles = squareTiles;
 		currentsquareTile = 0;
-		count = 0;
-		timesPlayed = 0;
-		delay = 2;
+		numCount = 0;
+		timesRun = 0;
+		timeDelay = 2;
 		numsquareTiles = squareTiles.length;
 	}
 	
-	public void setDelay(int i) { delay = i; }
+	public void settimeDelay(int i) { timeDelay = i; }
 	public void setsquareTile(int i) { currentsquareTile = i; }
 	public void setNumsquareTiles(int i) { numsquareTiles = i; }
 	
 	public void update() {
 		
-		if(delay == -1) return;
+		if(timeDelay == -1) return;
 		
-		count++;
+		numCount++;
 		
-		if(count == delay) {
+		if(numCount == timeDelay) {
 			currentsquareTile++;
-			count = 0;
+			numCount = 0;
 		}
 		if(currentsquareTile == numsquareTiles) {
 			currentsquareTile = 0;
-			timesPlayed++;
+			timesRun++;
 		}
 		
 	}
 	
 	public int getsquareTile() { return currentsquareTile; }
-	public int getCount() { return count; }
+	public int getnumCount() { return numCount; }
 	public BufferedImage getImage() { return squareTiles[currentsquareTile]; }
-	public boolean hasPlayedOnce() { return timesPlayed > 0; }
-	public boolean hasPlayed(int i) { return timesPlayed == i; }
+	public boolean hasPlayedOnce() { return timesRun > 0; }
+	public boolean hasPlayed(int i) { return timesRun == i; }
 	
 }

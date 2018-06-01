@@ -15,7 +15,7 @@ public class Sparkle extends Entity {
 	public Sparkle(TileMap tm) {
 		super(tm);
 		animation.setsquareTiles(Content.SPARKLE[0]);
-		animation.setDelay(5);
+		animation.settimeDelay(5);
 		width = height = 16;
 	}
 

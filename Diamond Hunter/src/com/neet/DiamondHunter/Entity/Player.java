@@ -66,14 +66,14 @@ public class Player extends Entity {
 		upBoatSprites = Content.PLAYER[7];
 		
 		animation.setsquareTiles(downSprites);
-		animation.setDelay(10);
+		animation.settimeDelay(10);
 		
 	}
 	
 	private void setAnimation(int i, BufferedImage[] bi, int d) {
 		currentAnimation = i;
 		animation.setsquareTiles(bi);
-		animation.setDelay(d);
+		animation.settimeDelay(d);
 	}
 	
 	public void collectedDiamond() { numDiamonds++; }
