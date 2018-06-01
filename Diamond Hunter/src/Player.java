@@ -10,24 +10,12 @@ import java.awt.image.BufferedImage;
 public class Player extends Entity {
 	
 	// sprites
-	private BufferedImage[] downSprites;
-	private BufferedImage[] leftSprites;
-	private BufferedImage[] rightSprites;
-	private BufferedImage[] upSprites;
-	private BufferedImage[] downBoatSprites;
-	private BufferedImage[] leftBoatSprites;
-	private BufferedImage[] rightBoatSprites;
-	private BufferedImage[] upBoatSprites;
-	
+	private BufferedImage[] dogSprite;
 	// animation
 	private final int DOWN = 0;
 	private final int LEFT = 1;
 	private final int RIGHT = 2;
 	private final int UP = 3;
-	private final int DOWNBOAT = 4;
-	private final int LEFTBOAT = 5;
-	private final int RIGHTBOAT = 6;
-	private final int UPBOAT = 7;
 	
 	// gameplay
 	private int numDiamonds;
@@ -50,16 +38,9 @@ public class Player extends Entity {
 		
 		numDiamonds = 0;
 		
-		downSprites = Content.PLAYER[0];
-		leftSprites = Content.PLAYER[1];
-		rightSprites = Content.PLAYER[2];
-		upSprites = Content.PLAYER[3];
-		downBoatSprites = Content.PLAYER[4];
-		leftBoatSprites = Content.PLAYER[5];
-		rightBoatSprites = Content.PLAYER[6];
-		upBoatSprites = Content.PLAYER[7];
+		dogSprite = Content.PLAYER[0];
 		
-		animation.setsquareTiles(downSprites);
+		animation.setsquareTiles(dogSprite);
 		animation.settimeDelay(10);
 		
 	}
@@ -138,39 +119,6 @@ public class Player extends Entity {
 			JukeBox.play("splash");
 		}
 		
-		// set animation
-		if(down) {
-			if(onWater && currentAnimation != DOWNBOAT) {
-				setAnimation(DOWNBOAT, downBoatSprites, 10);
-			}
-			else if(!onWater && currentAnimation != DOWN) {
-				setAnimation(DOWN, downSprites, 10);
-			}
-		}
-		if(left) {
-			if(onWater && currentAnimation != LEFTBOAT) {
-				setAnimation(LEFTBOAT, leftBoatSprites, 10);
-			}
-			else if(!onWater && currentAnimation != LEFT) {
-				setAnimation(LEFT, leftSprites, 10);
-			}
-		}
-		if(right) {
-			if(onWater && currentAnimation != RIGHTBOAT) {
-				setAnimation(RIGHTBOAT, rightBoatSprites, 10);
-			}
-			else if(!onWater && currentAnimation != RIGHT) {
-				setAnimation(RIGHT, rightSprites, 10);
-			}
-		}
-		if(up) {
-			if(onWater && currentAnimation != UPBOAT) {
-				setAnimation(UPBOAT, upBoatSprites, 10);
-			}
-			else if(!onWater && currentAnimation != UP) {
-				setAnimation(UP, upSprites, 10);
-			}
-		}
 		
 		// update position
 		super.update();
