@@ -65,14 +65,14 @@ public class Player extends Entity {
 		rightBoatSprites = Content.PLAYER[6];
 		upBoatSprites = Content.PLAYER[7];
 		
-		animation.setsquareTile(downSprites);
+		animation.setsquareTiles(downSprites);
 		animation.setDelay(10);
 		
 	}
 	
 	private void setAnimation(int i, BufferedImage[] bi, int d) {
 		currentAnimation = i;
-		animation.setsquareTile(bi);
+		animation.setsquareTiles(bi);
 		animation.setDelay(d);
 	}
 	
