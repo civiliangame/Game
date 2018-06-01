@@ -18,8 +18,8 @@ public class Player extends Entity {
 	private final int UP = 3;
 	
 	// gameplay
-	private int numDiamonds;
-	private int totalDiamonds;
+	private int numBones;
+	private int totalBones;
 	private boolean hasBoat;
 	private boolean hasAxe;
 	private boolean onWater;
@@ -36,7 +36,7 @@ public class Player extends Entity {
 		
 		moveSpeed = 2;
 		
-		numDiamonds = 0;
+		numBones = 0;
 		
 		dogSprite = Content.PLAYER[0];
 		
@@ -51,10 +51,10 @@ public class Player extends Entity {
 		animation.settimeDelay(d);
 	}
 	
-	public void collectedDiamond() { numDiamonds++; }
-	public int numDiamonds() { return numDiamonds; }
-	public int getTotalDiamonds() { return totalDiamonds; }
-	public void setTotalDiamonds(int i) { totalDiamonds = i; }
+	public void collectedBone() { numBones++; }
+	public int numBones() { return numBones; }
+	public int getTotalBones() { return totalBones; }
+	public void setTotalBones(int i) { totalBones = i; }
 	
 	public void gotBoat() { hasBoat = true; tileMap.replace(22, 4); }
 	public void gotAxe() { hasAxe = true; }

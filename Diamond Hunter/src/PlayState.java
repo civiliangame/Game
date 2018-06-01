@@ -11,8 +11,8 @@ public class PlayState extends GameState {
 	// tilemap
 	private TileMap tileMap;
 	
-	// diamonds
-	private ArrayList<Diamond> diamonds;
+	// bones
+	private ArrayList<Bone> bones;
 	
 	// items
 	private ArrayList<Item> items;
@@ -42,7 +42,7 @@ public class PlayState extends GameState {
 	public void init() {
 		
 		// create lists
-		diamonds = new ArrayList<Diamond>();
+		bones = new ArrayList<Bone>();
 		items = new ArrayList<Item>();
 		
 		// load map
@@ -54,12 +54,12 @@ public class PlayState extends GameState {
 		player = new Player(tileMap);
 		
 		// fill lists
-		populateDiamonds();
+		populateBones();
 		populateItems();
 		
 		// initialize player
 		player.setTilePosition(17, 17);
-		player.setTotalDiamonds(diamonds.size());
+		player.setTotalBones(bones.size());
 		
 		// set up camera position
 		sectorSize = GamePanel.WIDTH;
@@ -68,7 +68,7 @@ public class PlayState extends GameState {
 		tileMap.setPositionImmediately(-xsector * sectorSize, -ysector * sectorSize);
 		
 		// load hud
-		hud = new Hud(player, diamonds);
+		hud = new Hud(player, bones);
 		
 		// load music
 		JukeBox.load("/Music/bgmusic.mp3", "music1");
@@ -90,62 +90,62 @@ public class PlayState extends GameState {
 			
 	}
 	
-	private void populateDiamonds() {
+	private void populateBones() {
 		
-		Diamond d;
+		Bone d;
 		
-		d = new Diamond(tileMap);
+		d = new Bone(tileMap);
 		d.setTilePosition(20, 20);
 		d.addChange(new int[] { 23, 19, 1 });
 		d.addChange(new int[] { 23, 20, 1 });
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(12, 36);
 		d.addChange(new int[] { 31, 17, 1 });
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(28, 4);
 		d.addChange(new int[] {27, 7, 1});
 		d.addChange(new int[] {28, 7, 1});
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(4, 34);
 		d.addChange(new int[] { 31, 21, 1 });
-		diamonds.add(d);
+		bones.add(d);
 		
-		d = new Diamond(tileMap);
+		d = new Bone(tileMap);
 		d.setTilePosition(28, 19);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(35, 26);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(38, 36);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(27, 28);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(20, 30);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(14, 25);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(4, 21);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(9, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(4, 3);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(20, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		bones.add(d);
+		d = new Bone(tileMap);
 		d.setTilePosition(13, 20);
-		diamonds.add(d);
+		bones.add(d);
 		
 	}
 	
@@ -174,7 +174,7 @@ public class PlayState extends GameState {
 		if(eventStart) eventStart();
 		if(eventFinish) eventFinish();
 		
-		if(player.numDiamonds() == player.getTotalDiamonds()) {
+		if(player.numBones() == player.getTotalBones()) {
 			eventFinish = blockInput = true;
 		}
 		
@@ -195,21 +195,21 @@ public class PlayState extends GameState {
 		// update player
 		player.update();
 		
-		// update diamonds
-		for(int i = 0; i < diamonds.size(); i++) {
+		// update bones
+		for(int i = 0; i < bones.size(); i++) {
 			
-			Diamond d = diamonds.get(i);
+			Bone d = bones.get(i);
 			d.update();
 			
 			// player collects diamond
 			if(player.intersects(d)) {
 				
 				// remove from list
-				diamonds.remove(i);
+				bones.remove(i);
 				i--;
 				
-				// increment amount of collected diamonds
-				player.collectedDiamond();
+				// increment amount of collected bones
+				player.collectedBone();
 				
 				// play collect sound
 				JukeBox.play("collect");
@@ -246,8 +246,8 @@ public class PlayState extends GameState {
 		// draw player
 		player.draw(g);
 		
-		// draw diamonds
-		for(Diamond d : diamonds) {
+		// draw bones
+		for(Bone d : bones) {
 			d.draw(g);
 		}
 		

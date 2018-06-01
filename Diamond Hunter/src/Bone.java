@@ -1,4 +1,4 @@
-// Diamond class.
+// Bone class.
 // May contain a list of tileChanges.
 // These tileChanges are used to modify
 // the tile map upon collection.
@@ -8,13 +8,13 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 
-public class Diamond extends Entity {
+public class Bone extends Entity {
 	
 	BufferedImage[] sprites;
 	
 	private ArrayList<int[]> tileChanges;
 	
-	public Diamond(TileMap tm) {
+	public Bone(TileMap tm) {
 		
 		super(tm);
 		
@@ -23,7 +23,7 @@ public class Diamond extends Entity {
 		cwidth = 12;
 		cheight = 12;
 		
-		sprites = Content.DIAMOND[0];
+		sprites = Content.BONE[0];
 		animation.setsquareTiles(sprites);
 		animation.settimeDelay(10);
 		

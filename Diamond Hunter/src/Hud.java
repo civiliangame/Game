@@ -13,25 +13,25 @@ public class Hud {
 	private int yoffset;
 	
 	private BufferedImage bar;
-	private BufferedImage diamond;
+	private BufferedImage bone;
 	private BufferedImage boat;
 	private BufferedImage axe;
 	
 	private Player player;
 	
-	private int numDiamonds;
+	private int numBones;
 	
 	private Font font;
 	private Color textColor; 
 	
-	public Hud(Player p, ArrayList<Diamond> d) {
+	public Hud(Player p, ArrayList<Bone> d) {
 		
 		player = p;
-		numDiamonds = d.size();
+		numBones = d.size();
 		yoffset = GamePanel.HEIGHT;
 		
 		bar = Content.BAR[0][0];
-		diamond = Content.DIAMOND[0][0];
+		bone = Content.BONE[0][0];
 		boat = Content.ITEMS[0][0];
 		axe = Content.ITEMS[0][1];
 		
@@ -45,17 +45,17 @@ public class Hud {
 		// draw hud
 		g.drawImage(bar, 0, yoffset, null);
 		
-		// draw diamond bar
+		// draw bone bar
 		g.setColor(textColor);
-		g.fillRect(8, yoffset + 6, (int)(28.0 * player.numDiamonds() / numDiamonds), 4);
+		g.fillRect(8, yoffset + 6, (int)(28.0 * player.numBones() / numBones), 4);
 		
-		// draw diamond amount
+		// draw bone amount
 		g.setColor(textColor);
 		g.setFont(font);
-		String s = player.numDiamonds() + "/" + numDiamonds;
+		String s = player.numBones() + "/" + numBones;
 		Content.drawString(g, s, 40, yoffset + 3);
-		if(player.numDiamonds() >= 10) g.drawImage(diamond, 80, yoffset, null);
-		else g.drawImage(diamond, 72, yoffset, null);
+		if(player.numBones() >= 10) g.drawImage(bone, 80, yoffset, null);
+		else g.drawImage(bone, 72, yoffset, null);
 		
 		// draw items
 		if(player.hasBoat()) g.drawImage(boat, 100, yoffset, null);
