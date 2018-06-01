@@ -28,7 +28,7 @@ public class Diamond extends Entity {
 		cheight = 12;
 		
 		sprites = Content.DIAMOND[0];
-		animation.setFrames(sprites);
+		animation.setsquareTile(sprites);
 		animation.setDelay(10);
 		
 		tileChanges = new ArrayList<int[]>();
