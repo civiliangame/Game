@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Diamond Hunter/src"/>
+	<classpathentry kind="lib" path="Diamond Hunter/Libs/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="Diamond Hunter/Libs/mp3spi1.9.5.jar"/>
+	<classpathentry kind="lib" path="Diamond Hunter/Libs/tritonus_share.jar"/>
+	<classpathentry kind="output" path="Diamond Hunter/bin"/>
+</classpath>
