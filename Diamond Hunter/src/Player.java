@@ -79,8 +79,6 @@ public class Player extends Entity {
 	}
 	
 	// Keyboard input.
-	// If Player has axe, dead trees in front
-	// of the Player will be chopped down.
 	public void setAction() {
 		if(hasAxe) {
 			if(currentAnimation == UP && tileMap.getIndex(rowTile - 1, colTile) == 21) {

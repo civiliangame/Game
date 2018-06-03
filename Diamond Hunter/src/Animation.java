@@ -15,20 +15,7 @@ public class Animation {
 	private int numCount;
 	private int timeDelay;
 
-	private int timesRun;
 
-	
-	public Animation() {
-		timesRun = 0;
-	}
-	
-
-	public boolean hasPlayedOnce() { 
-		return timesRun > 0;
-	}
-	public boolean hasPlayed(int i) { 
-		return timesRun == i;
-	}
 	
 	public void update() {
 
@@ -42,7 +29,6 @@ public class Animation {
 		}
 		if(currentsquareTile == numsquareTiles) {
 			currentsquareTile = 0;
-			timesRun++;
 		}
 
 	}
@@ -66,7 +52,6 @@ public class Animation {
 		this.squareTiles = squareTiles;
 		currentsquareTile = 0;
 		numCount = 0;
-		timesRun = 0;
 		timeDelay = 2;
 		numsquareTiles = squareTiles.length;
 	}

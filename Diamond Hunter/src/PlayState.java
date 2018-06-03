@@ -164,7 +164,7 @@ public class PlayState extends GameState {
 			Bone d = bones.get(i);
 			d.update();
 
-			// player collects diamond
+			// player collects bone
 			if(player.intersects(d)) {
 
 				// remove from list

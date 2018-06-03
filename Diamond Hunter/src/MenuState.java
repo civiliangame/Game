@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 public class MenuState extends GameState {
 	
 	private BufferedImage bg;
-	private BufferedImage diamond;
+	private BufferedImage bone;
 	
 	private int currentOption = 0;
 	private String[] options = {
@@ -20,7 +20,7 @@ public class MenuState extends GameState {
 	
 	public void init() {
 		bg = Content.MENUBG[0][0];
-		diamond = Content.BONE[0][0];
+		bone = Content.BONE[0][0];
 	}
 	
 	public void update() {
@@ -34,8 +34,8 @@ public class MenuState extends GameState {
 		Content.drawString(g, options[0], 44, 90);
 		Content.drawString(g, options[1], 48, 100);
 		
-		if(currentOption == 0) g.drawImage(diamond, 25, 86, null);
-		else if(currentOption == 1) g.drawImage(diamond, 25, 96, null);
+		if(currentOption == 0) g.drawImage(bone, 25, 86, null);
+		else if(currentOption == 1) g.drawImage(bone, 25, 96, null);
 		
 	}
 	
