@@ -57,21 +57,6 @@ public class Hud {
 		if(player.numBones() >= 10) g.drawImage(bone, 80, yoffset, null);
 		else g.drawImage(bone, 72, yoffset, null);
 		
-		// draw items
-		if(player.hasBoat()) g.drawImage(boat, 100, yoffset, null);
-		if(player.hasAxe()) g.drawImage(axe, 112, yoffset, null);
-		
-		// draw time
-		int minutes = (int) (player.getTicks() / 1800);
-		int seconds = (int) ((player.getTicks() / 30) % 60);
-		if(minutes < 10) {
-			if(seconds < 10) Content.drawString(g, "0" + minutes + ":0" + seconds, 85, 3);
-			else Content.drawString(g, "0" + minutes + ":" + seconds, 85, 3);
-		}
-		else {
-			if(seconds < 10) Content.drawString(g, minutes + ":0" + seconds, 85, 3);
-			else Content.drawString(g, minutes + ":" + seconds, 85, 3);
-		}
 		
 		
 		

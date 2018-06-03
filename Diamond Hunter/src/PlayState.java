@@ -14,8 +14,6 @@ public class PlayState extends GameState {
 	// bones
 	private ArrayList<Bone> bones;
 	
-	// items
-	private ArrayList<Item> items;
 	
 	
 	// camera position
@@ -43,7 +41,6 @@ public class PlayState extends GameState {
 		
 		// create lists
 		bones = new ArrayList<Bone>();
-		items = new ArrayList<Item>();
 		
 		// load map
 		tileMap = new TileMap(16);
@@ -55,7 +52,6 @@ public class PlayState extends GameState {
 		
 		// fill lists
 		populateBones();
-		populateItems();
 		
 		// initialize player
 		player.setTilePosition(17, 17);
@@ -73,16 +69,9 @@ public class PlayState extends GameState {
 		// load music
 		JukeBox.load("/Music/bgmusic.mp3", "music1");
 		System.out.println("Got Music from here");
-		JukeBox.setVolume("music1", -10);
+		JukeBox.setVolume("music1", 3);
 		JukeBox.loop("music1", 1000, 1000, JukeBox.getFrames("music1") - 1000);
-		JukeBox.load("/Music/finish.mp3", "finish");
-		JukeBox.setVolume("finish", -10);
 		
-		// load sfx
-		JukeBox.load("/SFX/collect.wav", "collect");
-		JukeBox.load("/SFX/mapmove.wav", "mapmove");
-		JukeBox.load("/SFX/tilechange.wav", "tilechange");
-		JukeBox.load("/SFX/splash.wav", "splash");
 		
 		// start event
 		boxes = new ArrayList<Rectangle>();
@@ -149,23 +138,6 @@ public class PlayState extends GameState {
 		bones.add(d);
 		
 	}
-	
-	private void populateItems() {
-		
-		Item item;
-		
-		item = new Item(tileMap);
-		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
-		items.add(item);
-		
-		item = new Item(tileMap);
-		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
-		items.add(item);
-		
-	}
-	
 	public void update() {
 		
 		// check keys
@@ -187,9 +159,6 @@ public class PlayState extends GameState {
 		tileMap.setPosition(-xsector * sectorSize, -ysector * sectorSize);
 		tileMap.update();
 		
-		if(oldxs != xsector || oldys != ysector) {
-			JukeBox.play("mapmove");
-		}
 		
 		if(tileMap.isMoving()) return;
 		
@@ -212,28 +181,13 @@ public class PlayState extends GameState {
 				// increment amount of collected bones
 				player.collectedBone();
 				
-				// play collect sound
-				JukeBox.play("collect");
 				
 				// make any changes to tile map
 				ArrayList<int[]> ali = d.getChanges();
 				for(int[] j : ali) {
 					tileMap.setTile(j[0], j[1], j[2]);
 				}
-				if(ali.size() != 0) {
-					JukeBox.play("tilechange");
-				}
 				
-			}
-		}
-		// update items
-		for(int i = 0; i < items.size(); i++) {
-			Item item = items.get(i);
-			if(player.intersects(item)) {
-				items.remove(i);
-				i--;
-				item.collected(player);
-				JukeBox.play("collect");
 			}
 		}
 		
@@ -252,11 +206,6 @@ public class PlayState extends GameState {
 			d.draw(g);
 		}
 		
-		
-		// draw items
-		for(Item i : items) {
-			i.draw(g);
-		}
 		
 		// draw hud
 		hud.draw(g);
@@ -279,7 +228,6 @@ public class PlayState extends GameState {
 		if(Keys.isDown(Keys.RIGHT)) player.setRight();
 		if(Keys.isDown(Keys.UP)) player.setUp();
 		if(Keys.isDown(Keys.DOWN)) player.setDown();
-		if(Keys.isPressed(Keys.SPACE)) player.setAction();
 	}
 	
 	//===============================================
@@ -319,7 +267,7 @@ public class PlayState extends GameState {
 				else boxes.add(new Rectangle(128, i * 16, GamePanel.WIDTH, 16));
 			}
 			JukeBox.stop("music1");
-			JukeBox.play("finish");
+			
 		}
 		if(eventTick > 1) {
 			for(int i = 0; i < boxes.size(); i++) {
@@ -330,12 +278,6 @@ public class PlayState extends GameState {
 				else {
 					if(r.x > 0) r.x -= 4;
 				}
-			}
-		}
-		if(eventTick > 33) {
-			if(!JukeBox.isPlaying("finish")) {
-				Data.setTime(player.getTicks());
-				gsm.setState(GameStateManager.GAMEOVER);
 			}
 		}
 	}

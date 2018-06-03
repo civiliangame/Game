@@ -8,7 +8,7 @@ public class Game {
 	
 	public static void main(String[] args) {
 		
-		JFrame window = new JFrame("Diamond Hunter");
+		JFrame window = new JFrame("Bone Chase");
 		
 		window.add(new GamePanel());
 		

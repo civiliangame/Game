@@ -109,7 +109,7 @@ public abstract class Entity {
 		colTile = x / tileSize;
 		
 		if(left) {
-			if(colTile == 0 || tileMap.getType(rowTile, colTile - 1) == Tile.BLOCKED) {
+			if(colTile == 0) {
 				return false;
 			}
 			else {
@@ -117,7 +117,7 @@ public abstract class Entity {
 			}
 		}
 		if(right) {
-			if(colTile == tileMap.getNumCols() || tileMap.getType(rowTile, colTile + 1) == Tile.BLOCKED) {
+			if(colTile == tileMap.getNumCols()) {
 				return false;
 			}
 			else {
@@ -125,7 +125,7 @@ public abstract class Entity {
 			}
 		}
 		if(up) {
-			if(rowTile == 0 || tileMap.getType(rowTile - 1, colTile) == Tile.BLOCKED) {
+			if(rowTile == 0) {
 				return false;
 			}
 			else {
@@ -133,7 +133,7 @@ public abstract class Entity {
 			}
 		}
 		if(down) {
-			if(rowTile == tileMap.getNumRows() - 1 || tileMap.getType(rowTile + 1, colTile) == Tile.BLOCKED) {
+			if(rowTile == tileMap.getNumRows() - 1) {
 				return false;
 			}
 			else {

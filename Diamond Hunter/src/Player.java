@@ -10,19 +10,19 @@ import java.awt.image.BufferedImage;
 public class Player extends Entity {
 	
 	// sprites
-	private BufferedImage[] dogSprite;
+	private BufferedImage[] dogSprites;
+	
 	// animation
 	private final int DOWN = 0;
 	private final int LEFT = 1;
 	private final int RIGHT = 2;
 	private final int UP = 3;
 	
+	
 	// gameplay
 	private int numBones;
 	private int totalBones;
-	private boolean hasBoat;
-	private boolean hasAxe;
-	private boolean onWater;
+	
 	private long ticks;
 	
 	public Player(TileMap tm) {
@@ -38,9 +38,9 @@ public class Player extends Entity {
 		
 		numBones = 0;
 		
-		dogSprite = Content.PLAYER[0];
+		dogSprites = Content.PLAYER[0];
 		
-		animation.setsquareTiles(dogSprite);
+		animation.setsquareTiles(dogSprites);
 		animation.settimeDelay(10);
 		
 	}
@@ -55,11 +55,6 @@ public class Player extends Entity {
 	public int numBones() { return numBones; }
 	public int getTotalBones() { return totalBones; }
 	public void setTotalBones(int i) { totalBones = i; }
-	
-	public void gotBoat() { hasBoat = true; tileMap.replace(22, 4); }
-	public void gotAxe() { hasAxe = true; }
-	public boolean hasBoat() { return hasBoat; }
-	public boolean hasAxe() { return hasAxe; }
 	
 	// Used to update time.
 	public long getTicks() { return ticks; }
@@ -78,47 +73,10 @@ public class Player extends Entity {
 		super.setUp();
 	}
 	
-	// Keyboard input.
-	// If Player has axe, dead trees in front
-	// of the Player will be chopped down.
-	public void setAction() {
-		if(hasAxe) {
-			if(currentAnimation == UP && tileMap.getIndex(rowTile - 1, colTile) == 21) {
-				tileMap.setTile(rowTile - 1, colTile, 1);
-				JukeBox.play("tilechange");
-			}
-			if(currentAnimation == DOWN && tileMap.getIndex(rowTile + 1, colTile) == 21) {
-				tileMap.setTile(rowTile + 1, colTile, 1);
-				JukeBox.play("tilechange");
-			}
-			if(currentAnimation == LEFT && tileMap.getIndex(rowTile, colTile - 1) == 21) {
-				tileMap.setTile(rowTile, colTile - 1, 1);
-				JukeBox.play("tilechange");
-			}
-			if(currentAnimation == RIGHT && tileMap.getIndex(rowTile, colTile + 1) == 21) {
-				tileMap.setTile(rowTile, colTile + 1, 1);
-				JukeBox.play("tilechange");
-			}
-		}
-	}
 	
 	public void update() {
 		
 		ticks++;
-		
-		// check if on water
-		boolean current = onWater;
-		if(tileMap.getIndex(ydest / tileSize, xdest / tileSize) == 4) {
-			onWater = true;
-		}
-		else {
-			onWater = false;
-		}
-		// if going from land to water
-		if(!current && onWater) {
-			JukeBox.play("splash");
-		}
-		
 		
 		// update position
 		super.update();
