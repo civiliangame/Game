@@ -25,14 +25,14 @@ public class Player extends Entity {
 	private boolean onWater;
 	private long ticks;
 	
-	public Player(TileMap tm) {
+	public Player(TileMap tilemap) {
 		
-		super(tm);
+		super(tilemap);
 		
-		width = 16;
-		height = 16;
-		cwidth = 12;
-		cheight = 12;
+		w = 16;
+		h = 16;
+		cw = 12;
+		ch = 12;
 		
 		moveSpeed = 2;
 		

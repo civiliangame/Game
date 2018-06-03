@@ -9,10 +9,10 @@ import java.awt.Rectangle;
 public abstract class Entity {
 	
 	// dimensions
-	protected int width;
-	protected int height;
-	protected int cwidth;
-	protected int cheight;
+	protected int w;
+	protected int h;
+	protected int cw;
+	protected int ch;
 	
 	// position
 	protected int x;
@@ -96,7 +96,7 @@ public abstract class Entity {
 	}
 	
 	public Rectangle getRectangle() {
-		return new Rectangle(x, y, cwidth, cheight);
+		return new Rectangle(x, y, cw, ch);
 	}
 	
 	// Returns whether or not the entity can
@@ -188,8 +188,8 @@ public abstract class Entity {
 		setMapPosition();
 		g.drawImage(
 			animation.getImage(),
-			x + xmap - width / 2,
-			y + ymap - height / 2,
+			x + xmap - w / 2,
+			y + ymap - h / 2,
 			null
 		);
 	}

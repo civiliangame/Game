@@ -11,7 +11,7 @@ public class Bone extends Entity {
 	BufferedImage[] sprites;
 	
 	//Changing tiles
-	private ArrayList<int[]> tileChanges;
+	private ArrayList<int[]> tilesToChange;
 	
 	//Constructor
 	public Bone(TileMap tilemap) {
@@ -19,11 +19,11 @@ public class Bone extends Entity {
 		super(tilemap);
 		
 		
-		//Initializing dimensions
-		width = 16;
-		height = 16;
-		cwidth = 12;
-		cheight = 12;
+		//Initializing dimensions, width and height
+		w = 16;
+		h = 16;
+		cw = 12;
+		ch = 12;
 		
 		
 		//Applying the bone sprite
@@ -33,21 +33,27 @@ public class Bone extends Entity {
 		animation.settimeDelay(10);
 		
 		//initializing it
-		tileChanges = new ArrayList<int[]>();
+		tilesToChange = new ArrayList<int[]>();
 		
 	}
 	
+	//Adding the change
 	public void addChange(int[] i) {
-		tileChanges.add(i);
-	}
-	public ArrayList<int[]> getChanges() {
-		return tileChanges;
+		tilesToChange.add(i);
 	}
 	
+	//Getting changes
+	public ArrayList<int[]> getChanges() {
+		return tilesToChange;
+	}
+	
+	
+	//Calling the update method in Animation
 	public void update() {
 		animation.update();
 	}
 	
+	//Drawing it
 	public void draw(Graphics2D g) {
 		super.draw(g);
 	}
