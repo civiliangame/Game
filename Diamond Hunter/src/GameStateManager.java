@@ -23,8 +23,6 @@ public class GameStateManager {
 	
 	public GameStateManager() {
 		
-		JukeBox.init();
-		
 		paused = false;
 		pauseState = new PauseState(this);
 		

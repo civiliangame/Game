@@ -85,19 +85,15 @@ public class Player extends Entity {
 		if(hasAxe) {
 			if(currentAnimation == UP && tileMap.getIndex(rowTile - 1, colTile) == 21) {
 				tileMap.setTile(rowTile - 1, colTile, 1);
-				JukeBox.play("tilechange");
 			}
 			if(currentAnimation == DOWN && tileMap.getIndex(rowTile + 1, colTile) == 21) {
 				tileMap.setTile(rowTile + 1, colTile, 1);
-				JukeBox.play("tilechange");
 			}
 			if(currentAnimation == LEFT && tileMap.getIndex(rowTile, colTile - 1) == 21) {
 				tileMap.setTile(rowTile, colTile - 1, 1);
-				JukeBox.play("tilechange");
 			}
 			if(currentAnimation == RIGHT && tileMap.getIndex(rowTile, colTile + 1) == 21) {
 				tileMap.setTile(rowTile, colTile + 1, 1);
-				JukeBox.play("tilechange");
 			}
 		}
 	}
@@ -115,10 +111,6 @@ public class Player extends Entity {
 			onWater = false;
 		}
 		// if going from land to water
-		if(!current && onWater) {
-			JukeBox.play("splash");
-		}
-		
 		
 		// update position
 		super.update();

@@ -28,6 +28,7 @@ public class Item extends Entity{
 		else if(type == AXE) {
 			sprite = Content.ITEMS[1][1];
 		}
+		
 	}
 	
 	public void collected(Player p) {

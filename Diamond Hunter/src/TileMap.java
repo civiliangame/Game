@@ -79,6 +79,7 @@ public class TileMap {
 							tileSize
 						);
 				tiles[1][col] = new Tile(subimage, Tile.BLOCKED);
+				//tiles[1][col] = new Tile(subimage, Tile.NORMAL);
 			}
 			
 		}

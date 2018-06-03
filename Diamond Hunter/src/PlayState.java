@@ -17,7 +17,7 @@ public class PlayState extends GameState {
 	// items
 	private ArrayList<Item> items;
 	
-	
+	private int eventTick;
 	// camera position
 	private int xsector;
 	private int ysector;
@@ -30,7 +30,6 @@ public class PlayState extends GameState {
 	private boolean blockInput;
 	private boolean eventStart;
 	private boolean eventFinish;
-	private int eventTick;
 	
 	// transition box
 	private ArrayList<Rectangle> boxes;
@@ -69,20 +68,6 @@ public class PlayState extends GameState {
 		
 		// load hud
 		hud = new Hud(player, bones);
-		
-		// load music
-		JukeBox.load("/Music/bgmusic.mp3", "music1");
-		System.out.println("Got Music from here");
-		JukeBox.setVolume("music1", -10);
-		JukeBox.loop("music1", 1000, 1000, JukeBox.getFrames("music1") - 1000);
-		JukeBox.load("/Music/finish.mp3", "finish");
-		JukeBox.setVolume("finish", -10);
-		
-		// load sfx
-		JukeBox.load("/SFX/collect.wav", "collect");
-		JukeBox.load("/SFX/mapmove.wav", "mapmove");
-		JukeBox.load("/SFX/tilechange.wav", "tilechange");
-		JukeBox.load("/SFX/splash.wav", "splash");
 		
 		// start event
 		boxes = new ArrayList<Rectangle>();
@@ -187,10 +172,6 @@ public class PlayState extends GameState {
 		tileMap.setPosition(-xsector * sectorSize, -ysector * sectorSize);
 		tileMap.update();
 		
-		if(oldxs != xsector || oldys != ysector) {
-			JukeBox.play("mapmove");
-		}
-		
 		if(tileMap.isMoving()) return;
 		
 		// update player
@@ -212,16 +193,11 @@ public class PlayState extends GameState {
 				// increment amount of collected bones
 				player.collectedBone();
 				
-				// play collect sound
-				JukeBox.play("collect");
 				
 				// make any changes to tile map
 				ArrayList<int[]> ali = d.getChanges();
 				for(int[] j : ali) {
 					tileMap.setTile(j[0], j[1], j[2]);
-				}
-				if(ali.size() != 0) {
-					JukeBox.play("tilechange");
 				}
 				
 			}
@@ -233,7 +209,6 @@ public class PlayState extends GameState {
 				items.remove(i);
 				i--;
 				item.collected(player);
-				JukeBox.play("collect");
 			}
 		}
 		
@@ -271,7 +246,6 @@ public class PlayState extends GameState {
 	
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) {
-			JukeBox.stop("music1");
 			gsm.setPaused(true);
 		}
 		if(blockInput) return;
@@ -318,8 +292,6 @@ public class PlayState extends GameState {
 				if(i % 2 == 0) boxes.add(new Rectangle(-128, i * 16, GamePanel.WIDTH, 16));
 				else boxes.add(new Rectangle(128, i * 16, GamePanel.WIDTH, 16));
 			}
-			JukeBox.stop("music1");
-			JukeBox.play("finish");
 		}
 		if(eventTick > 1) {
 			for(int i = 0; i < boxes.size(); i++) {
@@ -330,12 +302,6 @@ public class PlayState extends GameState {
 				else {
 					if(r.x > 0) r.x -= 4;
 				}
-			}
-		}
-		if(eventTick > 33) {
-			if(!JukeBox.isPlaying("finish")) {
-				Data.setTime(player.getTicks());
-				gsm.setState(GameStateManager.GAMEOVER);
 			}
 		}
 	}
