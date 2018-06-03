@@ -12,12 +12,12 @@ import javax.imageio.ImageIO;
 public class Content {
 	
 	
-	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.gif", 128, 144);
+	public static BufferedImage[][] MENUBG = load("/menuscreen.gif", 128, 144);
 	
-	public static BufferedImage[][] PLAYER = load("/Sprites/playersprite.gif", 16, 16);
-	public static BufferedImage[][] BONE = load("/Sprites/bone.gif", 16, 16);
+	public static BufferedImage[][] PLAYER = load("/playersprite.gif", 16, 16);
+	public static BufferedImage[][] BONE = load("/bone.gif", 16, 16);
 	
-	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
+	public static BufferedImage[][] font = load("/font.gif", 8, 8);
 	
 	public static BufferedImage[][] load(String s, int w, int h) {
 		BufferedImage[][] ret;

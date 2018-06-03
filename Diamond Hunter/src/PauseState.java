@@ -24,8 +24,6 @@ public class PauseState extends GameState {
 		Content.drawString(g, "keys", 16, 84);
 		Content.drawString(g, ": move", 52, 80);
 		
-		Content.drawString(g, "space", 12, 96);
-		Content.drawString(g, ": action", 52, 96);
 		
 		Content.drawString(g, "F1:", 36, 112);
 		
