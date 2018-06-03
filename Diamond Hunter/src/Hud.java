@@ -12,7 +12,6 @@ public class Hud {
 	
 	private int yoffset;
 	
-	private BufferedImage bar;
 	private BufferedImage bone;
 	
 	private Player player;
@@ -37,12 +36,6 @@ public class Hud {
 	
 	public void draw(Graphics2D g) {
 		
-		// draw hud
-		g.drawImage(bar, 0, yoffset, null);
-		
-		// draw bone bar
-		g.setColor(textColor);
-		g.fillRect(8, yoffset + 6, (int)(28.0 * player.numBones() / numBones), 4);
 		
 		// draw bone amount
 		g.setColor(textColor);
