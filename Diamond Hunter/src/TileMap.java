@@ -81,7 +81,9 @@ public class TileMap {
 				tiles[1][col] = new Tile(subimage, Tile.BLOCKED);
 				//tiles[1][col] = new Tile(subimage, Tile.NORMAL);
 			}
-			
+
+			tiles[1][1] = tiles[0][1];
+			tiles[1][2] = tiles[0][1];
 		}
 		catch(Exception e) {
 			e.printStackTrace();
