@@ -6,20 +6,23 @@
 
 import java.awt.image.BufferedImage;
 
-public class Animation {
+public class Animation{
 
+	//Intialize Variables
 	private BufferedImage[] squareTiles;
 	private int currentsquareTile;
 	private int numsquareTiles;
-
 	private int numCount;
 	private int timeDelay;
 
 
 	
+	//Updates the game
 	public void update() {
 
-		if(timeDelay == -1) return;
+		//Error
+		if(timeDelay == -1) 
+			return;
 
 		numCount++;
 
@@ -34,7 +37,7 @@ public class Animation {
 	}
 	
 	
-
+	//Gettter setter methods
 	public void setsquareTile(int i) { 
 		currentsquareTile = i; 
 	}

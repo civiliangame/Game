@@ -1,32 +1,38 @@
 // Bone class.
-// May contain a list of tileChanges.
-// These tileChanges are used to modify
-// the tile map upon collection.
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 
-
+//Modifies upon bone collection
 public class Bone extends Entity {
 	
+	//Where the sprites come in
 	BufferedImage[] sprites;
 	
+	//Changing tiles
 	private ArrayList<int[]> tileChanges;
 	
-	public Bone(TileMap tm) {
+	//Constructor
+	public Bone(TileMap tilemap) {
 		
-		super(tm);
+		super(tilemap);
 		
+		
+		//Initializing dimensions
 		width = 16;
 		height = 16;
 		cwidth = 12;
 		cheight = 12;
 		
+		
+		//Applying the bone sprite
 		sprites = Content.BONE[0];
+		
 		animation.setsquareTiles(sprites);
 		animation.settimeDelay(10);
 		
+		//initializing it
 		tileChanges = new ArrayList<int[]>();
 		
 	}
