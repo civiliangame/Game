@@ -12,11 +12,9 @@ import javax.imageio.ImageIO;
 public class Content {
 	
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.gif", 128, 144);
-	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
 	
 	public static BufferedImage[][] PLAYER = load("/Sprites/playersprite.gif", 16, 16);
 	public static BufferedImage[][] BONE = load("/Sprites/bone.gif", 16, 16);
-	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16);
 	
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
 	
